@@ -31,7 +31,7 @@
             <?php $__currentLoopData = $subCategory->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="product-each">
                     <div class="card item-card">
-                        <div class="product-grid6 card-body ">
+                        <div class="product-grid6 card-body shadow">
                             <div class="product-image6 text-center">
                                 <div class="p-2">
                                     <img data-bs-target="#quick-view" data-bs-toggle="modal" class="w-100 quick-view img-fluid" src="<?php echo e(asset($product->image)); ?>" id="<?php echo e($product->id); ?>" style="height: 180px;cursor: pointer; max-width:200px" alt="<?php echo e($product->name); ?>">
@@ -71,7 +71,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="p-2 text-center">
+                        <div class="p-2 text-center shadow">
                             <?php if($product->stock > 0): ?>
                                 <form id="formCart" action="#" method="post">
                                     <input type="hidden" id="qty" name="qty" value="1">

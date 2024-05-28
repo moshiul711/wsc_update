@@ -265,14 +265,13 @@
 
 <div class="modal fade test" id="quick-view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header text-danger">
-                <h5 class="modal-title p-title"></h5>
-                <button  class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close">
+        <div class="modal-content" style="background-color: white">
+            <div class="modal-header">
+                <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body text-center" id="quick_view_body">
+            <div class="modal-body" id="quick_view_body">
 
             </div>
         </div>

@@ -180,7 +180,7 @@
                         <div class="hover:bg-gray-100">
                             <a href="<?php echo e(route('product.category',['id'=>$category->id,'name'=>$category->name])); ?>"
                                class="page-title text-black ps-2">
-                                <?php echo e($category->name); ?>
+                                <img src="<?php echo e(asset($category->icon)); ?>" alt=""><?php echo e($category->name); ?>
 
                             </a>
                         </div>

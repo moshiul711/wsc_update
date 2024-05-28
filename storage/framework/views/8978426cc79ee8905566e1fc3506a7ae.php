@@ -1,6 +1,6 @@
 <div class="modal-body">
     <div class="col-lg-12 col-md-12">
-        <div class="card productdesc">
+        <div class="card productdesc" style="box-shadow: none">
             <div class="card-body">
                 <div class="row mb-5">
                     <div class=" col-xl-6 col-lg-12 col-md-12">
@@ -60,7 +60,7 @@
                                     </a>
                                     <a class="px-5" style="color: darkred; font-size: 18px">
                                         <i class="fa fa-bar-chart-o"></i>
-                                        <?php echo e(count($product->reviews)); ?>Review(s)
+                                        <?php echo e(count($product->reviews)); ?> Review(s)
                                     </a>
                                     <?php if($product->stock > 0): ?>
                                         <a class="px-1" style="color: #008069; font-size: 18px">

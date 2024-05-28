@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ExecutiveMail;
 use App\Mail\OrderInvoice;
 use App\Models\Customer;
 use App\Models\Delivery;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use Illuminate\Http\Request;
-use Session;
-use App\Library\SslCommerz\SslCommerzNotification;
-use DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use App\Library\SslCommerz\SslCommerzNotification;
+use Session;
+use DB;
+
 
 class CheckoutController extends Controller
 {
@@ -56,8 +58,8 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-//        $this->sendCustomerSMS($request->phone);
-//        $this->sendExecutiveSMS();
+        $this->sendCustomerSMS($request->phone);
+        $this->sendExecutiveSMS();
         if(Session('customer_id')){
             $this->deliveryInfo = Delivery::storeDeliveryInfo($request);
         }
@@ -85,6 +87,7 @@ class CheckoutController extends Controller
 
         $this->mailTo = $request->email;
         Mail::To($this->mailTo)->send(new OrderInvoice($this->orderInfo));
+        Mail::To('mushippingline@gmail.com')->send(new ExecutiveMail($this->orderInfo));
 
         if ($request->payment == 'cod')
         {
