@@ -5,13 +5,20 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Workstation Business Gateway">
+    <meta name="description" content="Workstation Communication Limited. Networking Products Supplier. Workstation Business Gateway">
     <meta name="author" content="Workstation Communication Limited">
-    <meta name="keywords" content="Workstation, workstation, communication, Communication, Network, network, networking, networking product, patchcord, optical, olt, machine, signal fire,">
+    <meta name="image" content="Workstation Communication Limited">
+    <meta name="keywords" content="splicer, ai 10, comway, a3+, pon, 9db, splitter Network, network, networking, networking product, patchcord, optical, olt, machine, signal fire,">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta property="og:title" content="@yield('title')">
+    <meta property="og:description" content="@yield('description')">
+    <meta property="og:image" content="@yield('image')">
+    <meta property="og:url" content="@yield('url')">
+    <meta property="og:type" content="@yield('type')">
+
     <!-- TITLE -->
-    <title>@yield('title')</title>
+{{--    <title>@yield('title')</title>--}}
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/') }}website/assets/images/logo1.png" />
@@ -294,10 +301,10 @@
                             <ul class="slide-menu">
                                 @foreach($category->subCategories as $subCategory)
                                     <li>
-                                        <a href="{{ route('product.subcategory',['id'=>$subCategory->id,'name'=>$subCategory->name]) }}" class="slide-item">{{ $subCategory->name }}</a>
+                                        <a href="{{ route('product.subcategory',['slug'=>$subCategory->name]) }}" class="slide-item">{{ $subCategory->name }}</a>
                                     </li>
                                 @endforeach
-                                    <li><a href="{{ route('product.category',['id'=>$category->id,'name'=>$category->name]) }}">All Products</a></li>
+                                    <li><a href="{{ route('product.category',['name'=>$category->name]) }}">All Products</a></li>
                             </ul>
                         </li>
                         @endforeach

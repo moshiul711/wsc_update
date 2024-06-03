@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Library\SslCommerz\SslCommerzNotification;
 use Session;
 use DB;
+use Illuminate\Validation\Rule;
 
 
 class CheckoutController extends Controller
@@ -58,6 +59,18 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'email' => ['required', 'email', Rule::unique('customers', 'email'),],
+            'phone' => ['required','regex:/^(?:\+88|01)?\d{9}$/','max:14'],
+            'address' => 'required|string',
+            'city' => 'required'
+        ],
+            [
+                'phone.regex' => 'Please enter a valid Bangladeshi phone number.'
+            ]
+        );
+
         $this->sendCustomerSMS($request->phone);
         $this->sendExecutiveSMS();
         if(Session('customer_id')){

@@ -1,7 +1,8 @@
-<?php $__env->startSection('title'); ?>
-    <?php echo e($product->name); ?>
-
-<?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> <?php echo e($product->name); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('description'); ?> <?php echo e($product->long_description); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('image'); ?> <?php echo e(asset($product->image)); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('url'); ?> <?php echo e(route('product.detail',[$product->id,$product->name])); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('type'); ?> <?php echo e($product->category->name); ?> <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('main-content'); ?>
     <!-- PAGE-HEADER -->
@@ -19,9 +20,7 @@
         </nav>
     </div>
 
-    <!-- ROW-1 OPEN -->
     <div class="row">
-        <!-- COL-OPEN -->
         <div class="col-lg-12 col-md-12">
             <div class="card productdesc">
                 <div class="card-body">
@@ -33,16 +32,12 @@
                                         <div class="carousel slide h-100" data-bs-interval="t" id="thumbcarousel">
                                             <div class="carousel-inner h-100">
                                                 <ul class="carousel-item active d-flex h-100">
-                                                    <li class="thumb active" data-bs-slide-to="0"
-                                                        data-bs-target="#Slider">
-                                                        <img alt="<?php echo e($product->name); ?>"
-                                                             src="<?php echo e(asset($product->image)); ?>">
+                                                    <li class="thumb active" data-bs-slide-to="0" data-bs-target="#Slider">
+                                                        <img alt="<?php echo e($product->name); ?>" src="<?php echo e(asset($product->image)); ?>">
                                                     </li>
                                                     <?php $__currentLoopData = $product->otherImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $otherImage): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <li class="thumb" data-bs-slide-to="<?php echo e($loop->iteration); ?>"
-                                                            data-bs-target="#Slider">
-                                                            <img alt="<?php echo e($product->name); ?>"
-                                                                 src="<?php echo e(asset($otherImage->image)); ?>">
+                                                        <li class="thumb" data-bs-slide-to="<?php echo e($loop->iteration); ?>" data-bs-target="#Slider">
+                                                            <img alt="<?php echo e($product->name); ?>" src="<?php echo e(asset($otherImage->image)); ?>">
                                                         </li>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </ul>
@@ -55,27 +50,16 @@
                                         <div class="carousel slide h-100" data-bs-ride="false" id="Slider">
                                             <div class="carousel-inner h-100">
                                                 <div class="carousel-item active">
-                                                    <img alt="<?php echo e($product->name); ?>"
-                                                         class="img img-thumbnail w-100 d-block "
-                                                         src="<?php echo e(asset($product->image)); ?>"
-                                                         style="height: 300px; width: 811px">
-                                                    <div class="top-left"
-                                                         style="position: absolute;top: 2px;left: 2px;">
-                                                        <img src="<?php echo e(asset('/')); ?>website/assets/images/logo1.png"
-                                                             alt=""
-                                                             style="height:32px; width: 32px; border: 2px solid lightskyblue; border-radius: 50%">
+                                                    <img alt="<?php echo e($product->name); ?>" class="img img-thumbnail w-100 d-block " src="<?php echo e(asset($product->image)); ?>" style="height: 300px; width: 811px">
+                                                    <div class="top-left" style="position: absolute;top: 2px;left: 2px;">
+                                                        <img src="<?php echo e(asset('/')); ?>website/assets/images/logo1.png" alt="" style="height:32px; width: 32px; border: 2px solid lightskyblue; border-radius: 50%">
                                                     </div>
                                                 </div>
                                                 <?php $__currentLoopData = $product->otherImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $otherImage): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <div class="carousel-item">
-                                                        <img alt="img" class="img img-thumbnail w-100 d-block "
-                                                             src="<?php echo e(asset($otherImage->image)); ?>"
-                                                             style="height: 300px; width: 811px">
-                                                        <div class="top-left"
-                                                             style="position: absolute;top: 2px;left: 2px;">
-                                                            <img src="<?php echo e(asset('/')); ?>website/assets/images/logo1.png"
-                                                                 alt=""
-                                                                 style="height:32px; width: 32px; border: 2px solid lightskyblue; border-radius: 50%">
+                                                        <img alt="img" class="img img-thumbnail w-100 d-block " src="<?php echo e(asset($otherImage->image)); ?>" style="height: 300px; width: 811px">
+                                                        <div class="top-left" style="position: absolute;top: 2px;left: 2px;">
+                                                            <img src="<?php echo e(asset('/')); ?>website/assets/images/logo1.png" alt="" style="height:32px; width: 32px; border: 2px solid lightskyblue; border-radius: 50%">
                                                         </div>
                                                     </div>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -85,23 +69,17 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <h3 class="mb-2 mt-xl-0 mt-4"><?php echo e($product->name); ?></h3>
                             <div class="text-warning rating-container d-sm-flex">
                                 <div class="ms-2">
                                     <span>
-                                        <a style="color: #00cc00; font-size: 18px"><i
-                                                    class="fa fa-line-chart"></i> <?php echo e($product->hit_count); ?> View(s)</a>
-                                        <a class="px-5" style="color: darkred; font-size: 18px"><i
-                                                    class="fa fa-bar-chart-o"></i> <?php echo e(count($product->reviews)); ?>
-
-                                            Review(s)</a>
+                                        <a style="color: #00cc00; font-size: 18px"><i class="fa fa-line-chart"></i> <?php echo e($product->hit_count); ?> View(s)</a>
+                                        <a class="px-5" style="color: darkred; font-size: 18px"><i class="fa fa-bar-chart-o"></i> <?php echo e(count($product->reviews)); ?>Review(s)</a>
                                         <?php if($product->stock > 0): ?>
-                                            <a class="px-1" style="color: #008069; font-size: 18px"><i
-                                                        class=" fa fa-cubes"></i> In Stock</a>
-                                        <?php else: ?><a class="px-1 text-danger" style="color: #008069; font-size: 18px"><i
-                                                    class=" fa fa-cubes"></i>Out of Stock</a>
+                                            <a class="px-1" style="color: #008069; font-size: 18px"><i class=" fa fa-cubes"></i> In Stock</a>
+                                        <?php else: ?>
+                                            <a class="px-1 text-danger" style="color: #008069; font-size: 18px"><i class=" fa fa-cubes"></i>Out of Stock</a>
                                         <?php endif; ?>
                                     </span>
                                 </div>
@@ -110,40 +88,28 @@
                             <p class="mb-1">
                                 <span class="text-dark text-22">Tk. <?php echo e($product->offer_price); ?></span>
                                 <span class="mx-2 text-muted text-decoration-line-through text-18">Tk. <?php echo e($product->regular_price); ?></span>
-                                <span class="badge bg-red ms-2">(<?php echo e(round($offer = (($product->regular_price - $product->offer_price )/$product->regular_price)*100)); ?>
-
-                                    % Off)</span>
+                                <span class="badge bg-red ms-2">(<?php echo e(round($offer = (($product->regular_price - $product->offer_price )/$product->regular_price)*100)); ?>% Off)</span>
                             </p>
-
                             <div class="mt-5">
                                 <?php if($product->stock > 0): ?>
                                     <form id="formCart" action="#" method="post">
                                         <?php echo csrf_field(); ?>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
-                                                <input type="number" class="form-control" required
-                                                       placeholder="Enter Product Quantity" min="1"
-                                                       max="<?php echo e($product->stock); ?>" id="qty" name="qty" value="1">
+                                                <input type="number" class="form-control" required placeholder="Enter Product Quantity" min="1" max="<?php echo e($product->stock); ?>" id="qty" name="qty" value="1">
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <input type="submit" class="form-control btn btn-success text-bold"
-                                                       value="ADD TO CART" id="btnCart" data-id="<?php echo e($product->id); ?>">
+                                                <input type="submit" class="form-control btn btn-success text-bold" value="ADD TO CART" id="btnCart" data-id="<?php echo e($product->id); ?>">
                                             </div>
                                         </div>
                                     </form>
                                 <?php else: ?>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <input type="number" class="form-control" required
-                                                   placeholder="Enter Product Quantity" value="1" min="1"
-                                                   max="<?php echo e($product->stock); ?>" name="qty">
+                                            <input type="number" class="form-control" required placeholder="Enter Product Quantity" value="1" min="1" max="<?php echo e($product->stock); ?>" name="qty">
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <button class="btn btn-danger btn-block text-bold" data-bs-container="body"
-                                                    data-bs-content="We'll re-stock it very soon."
-                                                    data-bs-placement="top"
-                                                    data-bs-popover-color="default" data-bs-toggle="popover"
-                                                    title="Out of Stock">
+                                            <button class="btn btn-danger btn-block text-bold" data-bs-container="body" data-bs-content="We'll re-stock it very soon." data-bs-placement="top" data-bs-popover-color="default" data-bs-toggle="popover" title="Out of Stock">
                                                 Out of Stock
                                             </button>
                                         </div>
@@ -162,26 +128,22 @@
                             <div class="panel panel-primary">
                                 <div class="tab-menu-heading border-bottom-0">
                                     <div class="tabs-menu">
-                                        <!-- Tabs -->
                                         <ul class="nav panel-tabs ">
                                             <li>
-                                                <a class="btn active me-2 my-sm-0 my-1 text-body text-bold"
-                                                   data-bs-toggle="tab" href="#tab1">Specifications</a>
+                                                <a class="btn active me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab2">Description</a>
                                             </li>
                                             <li>
-                                                <a class="btn me-2 my-sm-0 my-1 text-body text-bold"
-                                                   data-bs-toggle="tab" href="#tab2">Description</a>
+                                                <a class="btn  me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab1">Specifications</a>
                                             </li>
                                             <li>
-                                                <a class="btn text-body my-sm-0 my-1 text-bold" data-bs-toggle="tab"
-                                                   href="#tab3">Reviews</a>
+                                                <a class="btn text-body my-sm-0 my-1 text-bold" data-bs-toggle="tab" href="#tab3">Reviews</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="panel-body tabs-menu-body">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab1">
+                                        <div class="tab-pane " id="tab1">
                                             <h4 class="mb-5 mt-3">General</h4>
                                             <ul class="list-unstyled mb-0">
                                                 <li class="row">
@@ -202,14 +164,6 @@
 
                                                     </div>
                                                 </li>
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
                                                 <li class="p-b-20 row">
                                                     <div class="col-sm-3 text-muted">
                                                         Replacement
@@ -230,7 +184,7 @@
 
                                             </ul>
                                         </div>
-                                        <div class="tab-pane" id="tab2">
+                                        <div class="tab-pane active" id="tab2">
                                             <?php echo $product->long_description; ?>
 
                                         </div>
@@ -241,26 +195,21 @@
                                                         <div class="media mb-5 cnsl">
                                                             <div class=" me-3">
                                                                 <a href="javascript:void(0)">
-                                                                    <img alt="64x64"
-                                                                         class="media-object rounded-circle thumb-sm"
-                                                                         src="<?php echo e(asset($review->customer->image)); ?>">
+                                                                    <img alt="64x64" class="media-object rounded-circle thumb-sm" src="<?php echo e(asset($review->customer->image)); ?>">
                                                                 </a>
                                                             </div>
                                                             <div class="media-body">
                                                                 <div class="name-time-container d-flex">
                                                                     <h5 class="mt-0 mb-0 me-2"><?php echo e($review->customer->first_name.' '.$review->customer->last_name); ?></h5>
-                                                                    <svg class="mx-2 me-1" viewbox="0 0 24 24"
-                                                                         xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M11.999939,6.5c-0.276123,0-0.5,0.223877-0.5,0.5v4.6914062l-2.7059937,1.3623047c-0.168457,0.0848999-0.2747803,0.2573853-0.2749634,0.4460449C8.5187988,13.7758789,8.7424927,13.9998169,9.0185547,14c0.078064,0.0003662,0.1550903-0.0180664,0.2245483-0.0537109l2.9814453-1.5C12.3933105,12.3615112,12.4998169,12.1888428,12.499939,12V7C12.499939,6.723877,12.276123,6.5,11.999939,6.5z M12,2C6.4771729,2,2,6.4771729,2,12s4.4771729,10,10,10c5.5201416-0.0064697,9.9935303-4.4798584,10-10C22,6.4771729,17.5228271,2,12,2z M12,21c-4.9705811,0-9-4.0294189-9-9s4.0294189-9,9-9c4.9683228,0.0054321,8.9945679,4.0316772,9,9C21,16.9705811,16.9705811,21,12,21z"></path>
-                                                                    </svg>
+                                                                    <svg class="mx-2 me-1" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.999939,6.5c-0.276123,0-0.5,0.223877-0.5,0.5v4.6914062l-2.7059937,1.3623047c-0.168457,0.0848999-0.2747803,0.2573853-0.2749634,0.4460449C8.5187988,13.7758789,8.7424927,13.9998169,9.0185547,14c0.078064,0.0003662,0.1550903-0.0180664,0.2245483-0.0537109l2.9814453-1.5C12.3933105,12.3615112,12.4998169,12.1888428,12.499939,12V7C12.499939,6.723877,12.276123,6.5,11.999939,6.5z M12,2C6.4771729,2,2,6.4771729,2,12s4.4771729,10,10,10c5.5201416-0.0064697,9.9935303-4.4798584,10-10C22,6.4771729,17.5228271,2,12,2z M12,21c-4.9705811,0-9-4.0294189-9-9s4.0294189-9,9-9c4.9683228,0.0054321,8.9945679,4.0316772,9,9C21,16.9705811,16.9705811,21,12,21z"></path></svg>
                                                                     <span class="time-main text-muted"><?php echo e($review->updated_at); ?></span>
                                                                 </div>
                                                                 <div class="text-warning mb-0">
-                                                                    <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star-o"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o"></i>
                                                                 </div>
                                                                 <div class="comment-main-action d-flex">
                                                                     <p class="font-13 text-muted mb-0 comment-main"><?php echo e($review->review); ?></p>
@@ -278,21 +227,15 @@
                                                                 <h5 class="card-title mb-3">Review</h5>
                                                             </div>
                                                             <div class="card-body">
-                                                                <form action="<?php echo e(route('product.review',$product->id)); ?>"
-                                                                      class="form-horizontal m-t-20" method="post">
+                                                                <form action="<?php echo e(route('product.review',$product->id)); ?>" class="form-horizontal m-t-20" method="post">
                                                                     <?php echo csrf_field(); ?>
                                                                     <div class="form-group">
                                                                         <div class="col-xs-12">
-                                                                            <textarea class="form-control" rows="5"
-                                                                                      name="review"
-                                                                                      placeholder="Share Your Experience..."></textarea>
+                                                                            <textarea class="form-control" rows="5" name="review" placeholder="Share Your Experience..."></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <button style="float: right"
-                                                                                class="btn btn-success-gradient"
-                                                                                type="submit">Post Review
-                                                                        </button>
+                                                                        <button style="float: right" class="btn btn-success-gradient" type="submit">Post Review</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -320,7 +263,6 @@
                     Related Products
                 </h3>
             </div>
-            
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
                 <?php $__currentLoopData = $relatedProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($product->status == 1): ?>

@@ -12,6 +12,8 @@ use App\Models\Slider;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use function Intervention\Image\exif;
+use Str;
 use Session;
 
 class WebsiteController extends Controller
@@ -61,7 +63,7 @@ class WebsiteController extends Controller
 
     public function productDetail($id,$name)
     {
-        $this->product = Product::where(['id' =>$id,'name' => $name])->first();
+        $this->product = Product::where(['id' =>$id])->first();
         if (!$this->product)
         {
             return view('website.home.error');
@@ -92,16 +94,16 @@ class WebsiteController extends Controller
         return back()->with('message','Thanks To Share Your Review...');
     }
 
-    public function productCategory($id,$name)
+    public function productCategory($name)
     {
         $this->coupons = Coupon::where('status',1)->get();
-        $this->category = Category::where(['id'=>$id,'name'=>$name])->first();
+        $this->category = Category::where(['name'=>$name])->first();
         return view('website.product.category-show',['category'=>$this->category,'coupons'=>$this->coupons]);
     }
-    public function productSubcategory($id,$name)
+    public function productSubcategory($slug)
     {
+        $this->subCategory = SubCategory::where(['name'=>$slug])->first();
         $this->coupons = Coupon::where('status',1)->get();
-        $this->subCategory = SubCategory::where(['id'=>$id,'name'=>$name])->first();
         return view('website.product.subCategory-show',['subCategory'=>$this->subCategory,'coupons'=>$this->coupons]);
     }
 

@@ -121,7 +121,7 @@
                             <div class="product-content w-100 p-3">
                                 <div class="mb-2" style="height: 40px">
                                     <h6 class="mb-1 text-normal">
-                                        <a href="<?php echo e(route('product.detail',[$product->id,$product->name])); ?>" title="<?php echo e($product->name); ?>">
+                                        <a href="<?php echo e(route('product.detail',[$product->id,Str::slug($product->name)])); ?>" title="<?php echo e($product->name); ?>">
                                             <?php echo e(Str::limit($product->name,37)); ?>
 
                                         </a>
@@ -178,7 +178,7 @@
                 <div class="col-8">
                     <div class="page-header" style="border-bottom: 4px solid #008069">
                         <div class="hover:bg-gray-100">
-                            <a href="<?php echo e(route('product.category',['id'=>$category->id,'name'=>$category->name])); ?>"
+                            <a href="<?php echo e(route('product.category',['name'=>$category->name])); ?>"
                                class="page-title text-black ps-2">
                                 <img src="<?php echo e(asset($category->icon)); ?>" alt=""><?php echo e($category->name); ?>
 
@@ -189,7 +189,7 @@
                 <div class="col-4">
                     <div class="page-header" style=" border-bottom: 4px solid #008069">
                         <div class="hover:bg-gray-100 float-end">
-                            <a href="<?php echo e(route('product.category',['id'=>$category->id,'name'=>$category->name])); ?>"
+                            <a href="<?php echo e(route('product.category',['name'=>$category->name])); ?>"
                                class="page-title text-black">View All
                             </a>
                         </div>

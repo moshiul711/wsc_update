@@ -38,8 +38,8 @@ Route::get('/terms',[WebsiteController::class,'terms'])->name('terms');
 Route::post('/coupon-apply',[CouponController::class,'apply'])->name('coupon.apply');
 
 //Product on Home Page
-Route::get('/product/category/{id}/{name}',[WebsiteController::class,'productCategory'])->name('product.category');
-Route::get('/product/subcategory/{id}/{name}',[WebsiteController::class,'productSubcategory'])->name('product.subcategory');
+Route::get('/{name}',[WebsiteController::class,'productCategory'])->name('product.category');
+Route::get('/{slug}',[WebsiteController::class,'productSubcategory'])->name('product.subcategory');
 Route::get('/product-detail/{id}/{name}',[WebsiteController::class,'productDetail'])->name('product.detail');
 Route::get('/product-quick-view',[WebsiteController::class,'productQuickView'])->name('productQuickView');
 Route::post('/product-review/{id}',[WebsiteController::class,'productReview'])->name('product.review');

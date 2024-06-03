@@ -123,7 +123,7 @@
                             <div class="product-content w-100 p-3">
                                 <div class="mb-2" style="height: 40px">
                                     <h6 class="mb-1 text-normal">
-                                        <a href="{{ route('product.detail',[$product->id,$product->name]) }}" title="{{ $product->name }}">
+                                        <a href="{{ route('product.detail',[$product->id,Str::slug($product->name)]) }}" title="{{ $product->name }}">
                                             {{ Str::limit($product->name,37) }}
                                         </a>
                                     </h6>
@@ -179,7 +179,7 @@
                 <div class="col-8">
                     <div class="page-header" style="border-bottom: 4px solid #008069">
                         <div class="hover:bg-gray-100">
-                            <a href="{{ route('product.category',['id'=>$category->id,'name'=>$category->name]) }}"
+                            <a href="{{ route('product.category',['name'=>$category->name]) }}"
                                class="page-title text-black ps-2">
                                 <img src="{{ asset($category->icon) }}" alt="">{{ $category->name }}
                             </a>
@@ -189,7 +189,7 @@
                 <div class="col-4">
                     <div class="page-header" style=" border-bottom: 4px solid #008069">
                         <div class="hover:bg-gray-100 float-end">
-                            <a href="{{ route('product.category',['id'=>$category->id,'name'=>$category->name]) }}"
+                            <a href="{{ route('product.category',['name'=>$category->name]) }}"
                                class="page-title text-black">View All
                             </a>
                         </div>

@@ -1,8 +1,10 @@
 @extends('website.master')
 
-@section('title')
-    {{ $product->name }}
-@endsection
+@section('title') {{ $product->name }} @endsection
+@section('description') {{ $product->long_description }} @endsection
+@section('image') {{ asset($product->image) }} @endsection
+@section('url') {{ route('product.detail',[$product->id,$product->name]) }} @endsection
+@section('type') {{ $product->category->name }} @endsection
 
 @section('main-content')
     <!-- PAGE-HEADER -->
@@ -130,10 +132,10 @@
                                     <div class="tabs-menu">
                                         <ul class="nav panel-tabs ">
                                             <li>
-                                                <a class="btn active me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab1">Specifications</a>
+                                                <a class="btn active me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab2">Description</a>
                                             </li>
                                             <li>
-                                                <a class="btn me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab2">Description</a>
+                                                <a class="btn  me-2 my-sm-0 my-1 text-body text-bold" data-bs-toggle="tab" href="#tab1">Specifications</a>
                                             </li>
                                             <li>
                                                 <a class="btn text-body my-sm-0 my-1 text-bold" data-bs-toggle="tab" href="#tab3">Reviews</a>
@@ -143,7 +145,7 @@
                                 </div>
                                 <div class="panel-body tabs-menu-body">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab1">
+                                        <div class="tab-pane " id="tab1">
                                             <h4 class="mb-5 mt-3">General</h4>
                                             <ul class="list-unstyled mb-0">
                                                 <li class="row">
@@ -182,7 +184,7 @@
 
                                             </ul>
                                         </div>
-                                        <div class="tab-pane" id="tab2">
+                                        <div class="tab-pane active" id="tab2">
                                             {!! $product->long_description !!}
                                         </div>
                                         <div class="tab-pane" id="tab3">

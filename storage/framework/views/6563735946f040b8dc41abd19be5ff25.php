@@ -32,7 +32,7 @@
             <?php $__currentLoopData = $category->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="product-each">
                     <div class="card item-card">
-                        <div class="product-grid6 card-body ">
+                        <div class="product-grid6 card-body shadow">
                             <div class="product-image6 text-center">
                                 <div class="p-2">
                                     <img data-bs-target="#quick-view" data-bs-toggle="modal" class="w-100 quick-view img-fluid" src="<?php echo e(asset($product->image)); ?>" id="<?php echo e($product->id); ?>" style="height: 180px;cursor: pointer; max-width:200px" alt="<?php echo e($product->name); ?>">
@@ -52,12 +52,12 @@
                                 </div>
                                 <a href="<?php echo e(route('product.detail',[$product->id,$product->name])); ?>">
                                     <p class="mb-2 text-warning">
-                                            <span>
-                                                <del class="text-16  ms-1" style="color: black">Tk.<?php echo e($product->regular_price); ?></del>
-                                            </span>
+                                        <span>
+                                            <del class="text-16  ms-1" style="color: black">Tk.<?php echo e($product->regular_price); ?></del>
+                                        </span>
                                         <span class="badge bg-red" style="float: right">
-                                                <?php echo e(round($offer = (($product->regular_price - $product->offer_price )/$product->regular_price)*100)); ?>% Off
-                                            </span>
+                                            <?php echo e(round($offer = (($product->regular_price - $product->offer_price )/$product->regular_price)*100)); ?>% Off
+                                        </span>
                                     </p>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <p class="mb-0">
@@ -72,7 +72,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="p-2 text-center">
+                        <div class="p-2 text-center shadow">
                             <?php if($product->stock > 0): ?>
                                 <form id="formCart" action="#" method="post">
                                     <input type="hidden" id="qty" name="qty" value="1">
