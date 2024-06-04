@@ -20,21 +20,20 @@ class WebsiteController extends Controller
 {
     public $featured_products, $message, $categories,$category,$subCategory, $product, $products,$customer,$reviews,$coupons,$relatedProducts,$sliders;
 
-    public function index()
+    public function index(Request $request)
     {
-//        return Session::get('customer_id');
-        $this->coupons = Coupon::where('status',1)->latest()->get();
-        $this->categories = Category::all();
-        $this->sliders = Slider::all();
-        $this->featured_products = Product::where('featured_status',1)->latest()->get();
-        return view('website.home.index',
-            [
-                'categories' => $this->categories,
-                'coupons' => $this->coupons,
-                'sliders' => $this->sliders,
-                'products' => $this->featured_products
-            ]
-        );
+
+        $coupons = Coupon::where('status',1)->latest()->get();
+        $categories = Category::orderBy('id', 'desc')->paginate(1);
+        $products = Product::all();
+        $sliders = Slider::all();
+        $featured_products = Product::where('featured_status',1)->latest()->get();
+        if ($request->ajax())
+        {
+            $view = view('website.home.data',compact('categories','products'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        return view('website.home.index',compact('categories','coupons','sliders','featured_products','products'));
     }
 
     public function about()
@@ -96,15 +95,17 @@ class WebsiteController extends Controller
 
     public function productCategory($name)
     {
-        $this->coupons = Coupon::where('status',1)->get();
-        $this->category = Category::where(['name'=>$name])->first();
-        return view('website.product.category-show',['category'=>$this->category,'coupons'=>$this->coupons]);
+        $coupons = Coupon::where('status',1)->get();
+        $category = Category::where(['name'=>$name])->first();
+        $products = Product::where('category_id',$category->id)->paginate(10);
+        return view('website.product.category-show',compact('coupons','category','products'));
     }
     public function productSubcategory($slug)
     {
-        $this->subCategory = SubCategory::where(['name'=>$slug])->first();
-        $this->coupons = Coupon::where('status',1)->get();
-        return view('website.product.subCategory-show',['subCategory'=>$this->subCategory,'coupons'=>$this->coupons]);
+        $coupons = Coupon::where('status',1)->get();
+        $subCategory = SubCategory::where(['name'=>$slug])->first();
+        $products = Product::where('sub_category_id',$subCategory->id)->paginate(10);
+        return view('website.product.subCategory-show',compact('coupons','subCategory','products'));
     }
 
     public function contact()

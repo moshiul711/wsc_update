@@ -17,6 +17,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function loadMore(Request $request)
+    {
+        $perPage = 10; // Number of products per page
+        $page = $request->input('page', 1);
+
+        $products = Product::paginate($perPage, ['*'], 'page', $page);
+
+        return response()->json($products);
+    }
+
     public function index()
     {
         $this->products = Product::all();

@@ -25,6 +25,9 @@ use App\Http\Controllers\SliderController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/products', [ProductController::class,'loadMore'])->name('products.loadMore');
+
+
 Route::get('/',[WebsiteController::class,'index'])->name('home');
 Route::get('/contact-us',[WebsiteController::class,'contact'])->name('contact-us');
 Route::get('/about',[WebsiteController::class,'about'])->name('about');
@@ -38,8 +41,8 @@ Route::get('/terms',[WebsiteController::class,'terms'])->name('terms');
 Route::post('/coupon-apply',[CouponController::class,'apply'])->name('coupon.apply');
 
 //Product on Home Page
-Route::get('/{name}',[WebsiteController::class,'productCategory'])->name('product.category');
-Route::get('/{slug}',[WebsiteController::class,'productSubcategory'])->name('product.subcategory');
+Route::get('/category/{name}',[WebsiteController::class,'productCategory'])->name('product.category');
+Route::get('/products/{slug}',[WebsiteController::class,'productSubcategory'])->name('product.subcategory');
 Route::get('/product-detail/{id}/{name}',[WebsiteController::class,'productDetail'])->name('product.detail');
 Route::get('/product-quick-view',[WebsiteController::class,'productQuickView'])->name('productQuickView');
 Route::post('/product-review/{id}',[WebsiteController::class,'productReview'])->name('product.review');

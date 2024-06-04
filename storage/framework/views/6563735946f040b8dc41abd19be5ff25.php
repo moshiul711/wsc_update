@@ -14,7 +14,7 @@
         </nav>
     </div>
 
-    <?php if(count($category->products) > 0): ?>
+    <?php if(count($products) > 0): ?>
         <?php if(count($coupons) > 0 ): ?>
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
@@ -29,7 +29,7 @@
         </div>
         <?php endif; ?>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-            <?php $__currentLoopData = $category->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="product-each">
                     <div class="card item-card">
                         <div class="product-grid6 card-body shadow">
@@ -89,6 +89,10 @@
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+        <div class="d-flex justify-content-center pb-5">
+            <?php echo e($products->links('pagination::bootstrap-4')); ?>
+
         </div>
     <?php else: ?>
         <div class="row">

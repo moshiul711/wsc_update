@@ -15,7 +15,7 @@
         </nav>
     </div>
 
-    @if(count($category->products) > 0)
+    @if(count($products) > 0)
         @if(count($coupons) > 0 )
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
@@ -30,7 +30,7 @@
         </div>
         @endif
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-            @foreach ($category->products as $product)
+            @foreach ($products as $product)
                 <div class="product-each">
                     <div class="card item-card">
                         <div class="product-grid6 card-body shadow">
@@ -89,6 +89,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="d-flex justify-content-center pb-5">
+            {{  $products->links('pagination::bootstrap-4') }}
         </div>
     @else
         <div class="row">
